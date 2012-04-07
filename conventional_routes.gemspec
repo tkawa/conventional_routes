@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Toru KAWAMURA"]
   s.email       = ["tkawa@4bit.net"]
   s.homepage    = "https://github.com/tkawa/conventional_routes"
-  s.summary     = %q{provide conventional routes without a description}
-  s.description = %q{provide conventional routes without a description}
+  s.summary     = %q{CoC routes provider for Rails}
+  s.description = %q{provide conventional routes without a definition.}
 
   s.rubyforge_project = "conventional_routes"
 
