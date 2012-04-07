@@ -15,9 +15,20 @@ All routes are `resources`. A controller in a directory produces a `namespace`.
 
 When these files exist:
 
-    app/controllers/users_controller.rb
-    app/controllers/admin/users_controller.rb
     app/controllers/admin/special/licenses_controller.rb
+    app/controllers/admin/users_controller.rb
+    app/controllers/users_controller.rb
+
+same as following definition:
+
+    namespace :admin do
+      namespace :special do
+        resources :licenses
+      end
+      resources :users
+    end
+    resources :users
+
 generates following routes:
 
         admin_special_licenses GET    /admin/special/licenses(.:format)          admin/special/licenses#index
@@ -34,13 +45,6 @@ generates following routes:
                     admin_user GET    /admin/users/:id(.:format)                 admin/users#show
                                PUT    /admin/users/:id(.:format)                 admin/users#update
                                DELETE /admin/users/:id(.:format)                 admin/users#destroy
-             application_index GET    /application(.:format)                     application#index
-                               POST   /application(.:format)                     application#create
-               new_application GET    /application/new(.:format)                 application#new
-              edit_application GET    /application/:id/edit(.:format)            application#edit
-                   application GET    /application/:id(.:format)                 application#show
-                               PUT    /application/:id(.:format)                 application#update
-                               DELETE /application/:id(.:format)                 application#destroy
                          users GET    /users(.:format)                           users#index
                                POST   /users(.:format)                           users#create
                       new_user GET    /users/new(.:format)                       users#new
