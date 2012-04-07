@@ -5,6 +5,7 @@ module ActionDispatch::Routing
     def conventional_routes
       Dir.glob('app/controllers/**/*_controller.rb').each do |path|
         controller = path.slice(%r|^app/controllers/(.*)_controller\.rb$|, 1)
+        next if controller == 'application'
         namespaces = controller.split('/')
         resources_name = namespaces.pop
         route = -> { resources resources_name }
