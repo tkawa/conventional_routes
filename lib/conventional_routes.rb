@@ -8,7 +8,7 @@ module ActionDispatch::Routing
         next if controller == 'application'
         namespaces = controller.split('/')
         resources_name = namespaces.pop
-        route = -> { resources resources_name }
+        route = -> { resources resources_name, :only => actions(path) }
         until namespaces.empty?
           ->(namespace_name, route_inside) {
             route = -> { namespace namespace_name, &route_inside }
@@ -16,6 +16,13 @@ module ActionDispatch::Routing
         end
         route.call
       end
+    end
+
+    private
+    def actions(path)
+      restful_actions = [:index, :show, :new, :edit, :create, :update, :destroy]
+      klass = Kernel.const_get(path.match(/app\/controllers\/(.*)\.rb/)[1].classify)
+      klass.public_instance_methods(false) & restful_actions
     end
   end
 end
