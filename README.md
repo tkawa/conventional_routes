@@ -62,12 +62,6 @@ That's it.
     gem 'conventional_routes', :git => 'git://github.com/tkawa/conventional_routes.git'
 
 
-## Restriction
-
-The generated routes cannot show in `rake routes`.
-
-I have no idea how to fix it. Please tell me!
-
 ## Copyright
 
 Copyright (c) 2012 Toru KAWAMURA.
