@@ -23,7 +23,7 @@ end
 module ConventionalRoutes
   class Railtie < ::Rails::Railtie
     initializer 'conventional_routes' do |app|
-      app.routes.append do
+      app.routes.prepend do
         conventional_routes
       end
     end
